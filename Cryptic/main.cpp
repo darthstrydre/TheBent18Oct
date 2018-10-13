@@ -7,16 +7,51 @@ std::mutex print_mutex;
 
 static const int num_threads = 10;
 
-void prin (int W) {
+void prin (int S, int I, int X, int T, int E, int N, int W, int Y, int O, int V) {
     std::lock_guard<std::mutex> lock(print_mutex);
-    std::cout << "Hello, World" << W << std::endl;
+    std::cout << "SIXTEEN  + TWENTY + TWENTY + TEN + TWO + TWO = SEVENTY" << W << std::endl;
 }
 
-void call_from_thread(int W) {
-prin(W);
+void call_from_thread(int V) {
+    for(int S=1; S<10; S++) {
+        if (S==V) continue;
+        for(int I=0; I<10; I++) {
+            if(I==S||I==V) continue;
+            for(int X=0; X<10; X++) {
+                if(X==I||X==S||X==V) continue;
+                for(int T=1; T<10; T++) {
+                    if(T==X||T==I||T==S||T==V) continue;
+                    for(int E=0; E<10; E++) {
+                        if(E==T||E==X||E==I||E==S||E==V) continue;
+                        for(int N=0; N<10; N++) {
+                            if(N==E||N==T||N==X||N==I||N==S||N==V) continue;
+                            for(int W=0; W<10; W++) {
+                                if(W==N||W==E||W==T||W==X||W==I||W==S||W==V) continue;
+                                for(int Y=0; Y<10; Y++) {
+                                    if(Y==W||Y==N||Y==E||Y==T||Y==X||Y==I||Y==S||Y==V) continue;
+                                    for(int O=0; O<10; O++) {
+                                        if(O==Y||O==W||O==N||O==E||O==T||O==X||O==I||O==S||O==V) continue;
+
+                                        int sixteen=S*1000000 + I*100000 + X*10000 + T*1000 + E*110        + N;
+                                        int twenty=             T*100010 + W*10000 + E*1000 + N*100        + Y;
+                                        int ten=                                              T*100 + E*10 + N;
+                                        int two=                                              T*100 + W*10 + O;
+                                        int seventy=S*1000000 + E*101000 + V*10000          + N*100 + T*10 + Y;
+                                        if(sixteen+twenty+twenty+ten+two+two==seventy) {
+                                            prin(S, I, X, T, E, N, W, Y, O, V);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
-
+SIXTEN WY O V
 
 
 int main() {
@@ -25,7 +60,7 @@ int main() {
     for (int i = 0; i < num_threads; ++i) {
         t[i] = std::thread(call_from_thread, i);
     }
-    
+
     for (int i = 0; i < num_threads; ++i) {
         t[i].join();
     }

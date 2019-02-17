@@ -1,0 +1,47 @@
+//#include <stdio.h>
+#include <iostream>
+#include <thread>
+#include <mutex>
+
+std::mutex print_mutex;
+
+static const int num_threads = 10;
+
+void prin(int one, int two, int five, int ten, int twenty, int fifty); {
+    std::lock_guard<std::mutex> lock(print_mutex);
+    std::cout << sixteen << " + " << twenty << " + " << twenty << " + " << ten << " + " << two << " + " << two << " = " << seventy << std::endl;
+    
+}
+
+void call_from_thread(int ten) {
+    for(int one=0; one<=100; one++) {
+        if (ten*10+one>100) break;
+        for(int two=0; two<=50; two++) {
+            if(two*2+ten*10+one>100) break;
+            for(int five=0; five<=20; five++) {
+                if(five*5+two*2+ten*10+one>100) break;
+                for(int twenty=1; twenty<=5; twenty++) {
+                    if(twenty*20+five*5+two*2+ten*10+one>100) break;
+                    for(int fifty=0; fifty<=2; fifty++) {
+                        if(fifty*50+twenty*20+five*5+two*2+ten*10+one>100) break;
+                        if(fifty*50+twenty*20+five*5+two*2+ten*10+one==100) prin(one, two, five, ten, twenty, fifty);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+int main() {
+    std::thread t[num_threads];
+
+    for (int i = 0; i <= num_threads; ++i) {
+        t[i] = std::thread(call_from_thread, i);
+    }
+
+    for (int i = 0; i <= num_threads; ++i) {
+        t[i].join();
+    }
+
+    return 0;
+}

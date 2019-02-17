@@ -1,0 +1,44 @@
+//#include <stdio.h>
+#include <iostream>
+#include <thread>
+#include <mutex>
+#include <random>
+
+std::mutex print_mutex;
+int numfound=0;
+
+static const int num_threads = 11;
+
+void prin(char board[])
+{
+    std::lock_guard<std::mutex> lock(print_mutex);
+    for (int i=0;i<63;i++)
+    {if(i%8==0) cout << endl;
+     cout << board[i];
+    }
+    ;
+    
+}
+void call_from_thread() {
+    char board[63];
+    int rnd;
+    std::random_device rd;  //Will be used to obtain a seed for the random number engine
+    std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
+    std::uniform_int_distribution<> dis(0, 63);
+    board[dis(gen)]='Q';
+    prin(board);
+}
+
+int main() {
+    std::thread t[num_threads];
+
+    for (int i = 0; i < num_threads; ++i) {
+        t[i] = std::thread(call_from_thread);
+    }
+
+    for (int i = 0; i < num_threads; ++i) {
+        t[i].join();
+    }
+
+    return 0;
+}

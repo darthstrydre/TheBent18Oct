@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Workspace Name="TheBent18Oct" Database="" Version="10.0.0">
-  <Project Name="Cryptic" Path="Cryptic/Cryptic.project" Active="Yes"/>
+  <Project Name="Cryptic" Path="Cryptic/Cryptic.project" Active="No"/>
+  <Project Name="Change" Path="Change/Change.project" Active="No"/>
+  <Project Name="Queens" Path="Queens/Queens.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="no">
       <Environment/>
       <Project Name="Cryptic" ConfigName="Debug"/>
+      <Project Name="Change" ConfigName="Debug"/>
+      <Project Name="Queens" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
       <Project Name="Cryptic" ConfigName="Release"/>
+      <Project Name="Change" ConfigName="Release"/>
+      <Project Name="Queens" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

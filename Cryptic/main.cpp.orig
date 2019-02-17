@@ -11,7 +11,7 @@ void prin (int sixteen, int twenty, int ten, int two, int seventy) {
     std::lock_guard<std::mutex> lock(print_mutex);
     std::cout << "SIXTEEN + TWENTY + TWENTY + TEN + TWO + TWO = SEVENTY" << std::endl;
     std::cout << sixteen << " + " << twenty << " + " << twenty << " + " << ten << " + " << two << " + " << two << " = " << seventy << std::endl;
-
+    
 }
 
 void call_from_thread(int V) {
